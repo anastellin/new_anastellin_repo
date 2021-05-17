@@ -1,0 +1,19 @@
+.tasks {
+    margin-left: 40px;
+    margin-top: 30px;
+    background-color: blanchedalmond;
+    width: 50%;
+    line-height: 30px;
+    padding: 15px;
+  }
+  
+  .name {
+    font-size: 23px;
+    font-weight: bold;
+  }
+  
+  .button {
+    width: 100px;
+    height: 30px;
+    border-radius: 50%;
+  }
