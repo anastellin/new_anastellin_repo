@@ -1,7 +1,10 @@
 import React from 'react';
-import Task from './../Task/Task';
-import './../App.css';
-import AddTask from './../InputTask/inputTask';
+import styles from './../App.modules.scss';
+import AddTask from '../InputTask/inputTask';
+import classnames from "classnames/bind"
+import Task from "../Task/Task"
+
+const cx = classnames.bind(styles)
 
 class MyTodoList extends React.Component {
   state = {
@@ -47,7 +50,7 @@ class MyTodoList extends React.Component {
     return (
       <div>
         <AddTask addNewTask={this.addNewTask} />
-        <div class="App">
+        <div class={cx("container")}>
           {this.state.tasks.map(it => <Task key={it.id} name={it.name} description={it.description} completed={it.completed} 
           onClick={() => this.handleClick(it.id, it.completed)} />)}
         </div>
