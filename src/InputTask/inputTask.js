@@ -1,9 +1,10 @@
-import React from 'react';
-import './inputTaskStyle.css';
+import React, { Children } from 'react';
+import styles from './inputTaskStyle.modules.scss';
+import classnames from "classnames/bind"
+import { ThemeContext } from "../ThemeContext"
+import Input from "../InputBox/Input"
 
-const Input = (props) => {
-    return <input value={props.value} onChange={props.onChange} name={props.name} />
-}
+const cx = classnames.bind(styles)
 
 class AddTask extends React.Component {
     state = {
@@ -23,10 +24,10 @@ class AddTask extends React.Component {
         console.log(this.state)
 
         return (
-            <div className='inputBox'>
-                <Input value={this.state.name} onChange={this.handleChange} name="name" />
-                <Input value={this.state.description} onChange={this.handleChange} name="description" />
-                <button onClick={this.handleClick} className='inputButton'>OK</button>
+            <div className={cx("inputBox")}>
+                <Input placeholder='Task name' value={this.state.name} onChange={this.handleChange} name="name" />
+                <Input placeholder='Description' value={this.state.description} onChange={this.handleChange} name="description" />
+                <button onClick={this.handleClick} className={cx("inputButton")}>OK</button>
             </div>
         )
     }
