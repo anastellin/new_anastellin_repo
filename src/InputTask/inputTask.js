@@ -1,36 +1,40 @@
-import React, { Children } from 'react';
-import styles from './inputTaskStyle.modules.scss';
-import classnames from "classnames/bind"
-import { ThemeContext } from "../ThemeContext"
-import Input from "../InputBox/Input"
+import classnames from 'classnames/bind'
+import styles from './inputTaskStyle.modules.scss'
+import { connect } from 'react-redux'
+import { handleInputChange } from '../actions/taskProjects'
+import { AddTaskButton } from './addTaskButton'
 
 const cx = classnames.bind(styles)
 
-class AddTask extends React.Component {
-    state = {
-        name: '',
-        description: ''
-    }
+const mapStateToProps = (state) => ({
+  taskName: state.taskProjects.taskName,
+  taskDescription: state.taskProjects.taskDescription,
+  theme: state.theme.theme
+})
 
-    handleChange = (event) => {
-        const {value, name} = event.currentTarget
-        this.setState({[name]: value})
-    }
+const mapDispatchToProps = (dispatch) => ({
+  dispatchOnInputChange: (input) => dispatch(handleInputChange(input))
+})
 
-    handleClick = (props) => {
-        this.props.addNewTask(this.state.name, this.state.description)
-    }
-    render() {
-        console.log(this.state)
+const inputTaskComp = ({ taskName, taskDescription, theme, dispatchOnInputChange, projectId }) => {
+  const onInputChange = (event) => {
+    dispatchOnInputChange(event.target)
+  }
 
-        return (
-            <div className={cx("inputBox")}>
-                <Input placeholder='Task name' value={this.state.name} onChange={this.handleChange} name="name" />
-                <Input placeholder='Description' value={this.state.description} onChange={this.handleChange} name="description" />
-                <button onClick={this.handleClick} className={cx("inputButton")}>OK</button>
-            </div>
-        )
-    }
+  return (
+    <div className={cx('task_add')}>
+      <div className={cx('inputs')}>
+          <div>
+            <input className={cx('input', `input-theme-${theme}`)} value={taskName} onChange={onInputChange} placeholder='Task name' name='taskName' />
+          </div>
+          <div>
+            <input className={cx('input', `input-theme-${theme}`)} value={taskDescription} onChange={onInputChange} placeholder='Task description' name='taskDescription' />
+          </div>
+        </div>
+        <AddTaskButton projectId={projectId} />
+    </div>
+  )
 }
 
-export default AddTask;
+export const InputTask = connect(mapStateToProps, mapDispatchToProps)(inputTaskComp);
+
