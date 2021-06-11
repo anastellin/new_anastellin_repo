@@ -16,7 +16,7 @@ const addProjectButtonComp = ({ dispatchOnClicktAddProject }) => {
 
     return (
         <div>
-            <button className={cx('project_add_button')} onClick={onClickAddProject}>Add</button>
+            <button className={cx('buttonProj')} onClick={onClickAddProject}>Add</button>
         </div>
     )
 }
