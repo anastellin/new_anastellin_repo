@@ -28,10 +28,10 @@ const ProjectTasksComp = ({ tasksById, projectsById, theme }) => {
         return (
             <div className={cx('tasks')}>
                 <h1 className={cx('header', `header-theme-${theme}`)}>{projectName}</h1>
-                <div className={cx('new_task')}>
+                <div>
                     <InputTask projectId={projectId} />
                 </div>
-                <TasksList tasksById={projectTasks} />
+                <TasksList projectId={projectId} tasksById={projectTasks} />
             </div>
         )
     } else {

@@ -21,9 +21,9 @@ const addProjectComp = ({ projectName, dispatchOnInputChange }) => {
   }
 
   return (
-      <div className={cx('project_add')}>
+      <div className={cx('addProj')}>
           <div>
-              <input className={cx('input')} value={projectName} onChange={onInputChange} placeholder='Project name' name='projectName' />
+              <input value={projectName} onChange={onInputChange} placeholder='Project name' name='projectName' />
           </div>
           <div>
               <AddProjectButton />
