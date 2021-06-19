@@ -1,21 +1,22 @@
 import classnames from 'classnames/bind'
 import styles from './inputTaskStyle.modules.scss'
 import { connect } from 'react-redux'
-import { handleClickAddTask } from '../actions/taskProjects'
+import { fetchPostAddTaskClick } from '../actions/taskProjects'
 
 const cx = classnames.bind(styles)
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchOnClickTaskAdd: (projectId) => dispatch(handleClickAddTask(projectId))
+  dispatchOnFetchPostAddTaskClick: (projectId) => dispatch(fetchPostAddTaskClick(projectId))
 })
 
-const addTaskButtonComp = ({ dispatchOnClickTaskAdd, projectId }) => {
-  const onClickAddTask = (event) => {
-    dispatchOnClickTaskAdd(event.target.value)
+const addTaskButtonComp = ({ dispatchOnFetchPostAddTaskClick, projectId }) => {
+  const onFetchPostAddTaskClick = (event) => {
+    dispatchOnFetchPostAddTaskClick(event.target.value)
   }
 
   return (
-    <button value={projectId} className={cx('task_add_button')} onClick={onClickAddTask}>Add Task</button>
+    <button value={projectId} className={cx('inputButton')}
+     onClick={onFetchPostAddTaskClick}>Add Task</button>
   )
 }
 

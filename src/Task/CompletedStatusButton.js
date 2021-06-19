@@ -1,21 +1,21 @@
 import classnames from 'classnames/bind'
 import styles from './TaskStyle.modules.scss';
 import { connect } from 'react-redux'
-import { handleClickCompletedStatus } from '../actions/taskProjects'
+import { fetchPostTaskStatusClick } from '../actions/taskProjects'
 
 const cx = classnames.bind(styles)
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchOnClickCompletedStatus: (taskId) => dispatch(handleClickCompletedStatus(taskId))
+  dispatchOnFetchPostTaskStatusClick: (taskID) => dispatch(fetchPostTaskStatusClick(taskID))
 })
 
-const completedStatusButtonComp = ({ taskId, dispatchOnClickCompletedStatus }) => {
-  const onClickCompletedStatus = (event) => {
-    dispatchOnClickCompletedStatus(event.target.value)
+const completedStatusButtonComp = ({ taskID, dispatchOnFetchPostTaskStatusClick }) => {
+  const onFetchPostTaskStatusClick = (event) => {
+    dispatchOnFetchPostTaskStatusClick(event.target.value)
   }
 
     return (
-      <button value={taskId} className={cx('task_completed_button',)} onClick={onClickCompletedStatus}>Done</button>
+      <button value={taskID} className={cx('button',)} onClick={onFetchPostTaskStatusClick}>Done</button>
     )
   }
 

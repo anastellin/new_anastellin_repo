@@ -1,22 +1,22 @@
 import classnames from 'classnames/bind'
 import { connect } from 'react-redux'
-import { handleClickAddProject } from '../actions/taskProjects'
+import { fetchPostAddProjectClick } from '../actions/taskProjects'
 import styles from './AddProject.modules.scss'
 
 const cx = classnames.bind(styles)
 
 const mapDispatchToProps = (dispatch) => ({
-    dispatchOnClicktAddProject: (event) => dispatch(handleClickAddProject(event))
+    dispatchOnfetchPostAddProjectClick: () => dispatch(fetchPostAddProjectClick())
 })
 
-const addProjectButtonComp = ({ dispatchOnClicktAddProject }) => {
-    const onClickAddProject = (event) => {
-        dispatchOnClicktAddProject(event.target)
+const addProjectButtonComp = ({ dispatchOnfetchPostAddProjectClick }) => {
+    const onfetchPostAddProjectClick = () => {
+        dispatchOnfetchPostAddProjectClick()
     }
 
     return (
         <div>
-            <button className={cx('buttonProj')} onClick={onClickAddProject}>Add</button>
+            <button className={cx('buttonProj')} onClick={onfetchPostAddProjectClick}>Add</button>
         </div>
     )
 }
